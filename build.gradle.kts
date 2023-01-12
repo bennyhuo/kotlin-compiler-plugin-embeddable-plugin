@@ -1,6 +1,6 @@
 plugins {
     `kotlin-dsl`
-    id("maven-publish")
+    id("com.vanniktech.maven.publish") version "0.22.0"
 }
 
 repositories {
@@ -9,7 +9,7 @@ repositories {
 
 dependencies {
     implementation("com.github.jengelman.gradle.plugins:shadow:6.1.0")
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0")
 }
 
 gradlePlugin {
@@ -30,5 +30,5 @@ gradlePlugin {
     }
 }
 
-group = "com.bennyhuo.kotlin"
-version = "1.7.10.0"
+group = project.property("GROUP").toString()
+version = project.property("VERSION_NAME").toString()

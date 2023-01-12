@@ -112,7 +112,9 @@ fun Project.jarWithEmbedded() {
 
 fun Project.testWithEmbedded() {
     configurations.getOrCreate("embedded").extendsFrom(configurations.getByName("implementation"))
-    embeddableCompiler()
+    embeddableCompiler().configure {
+        mustRunAfter(tasks.named<Jar>("jar"))
+    }
 
     // filter classes dir from compileJava
     val excludedCompiledFiles = tasks.withType<AbstractCompile>().filter {
