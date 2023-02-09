@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     `kotlin-dsl`
     id("com.vanniktech.maven.publish") version "0.22.0"
@@ -32,3 +34,11 @@ gradlePlugin {
 
 group = project.property("GROUP").toString()
 version = project.property("VERSION_NAME").toString()
+
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions.jvmTarget = "1.8"
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
